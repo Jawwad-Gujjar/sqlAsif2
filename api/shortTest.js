@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 // const sql = require("msnodesqlv8");
 
-// const connectionString = "server=202.143.127.178;Database=Biztekmain;User ID=erpuser;Password=ghs@wasnazskr@786@;Driver={SQL Server Native Client 11.0}";
+// const connectionString = "server=;Database=Biztekmain;User ID=erpuser;Password=;Driver={SQL Server Native Client 11.0}";
 // const query = "SELECT userid FROM users";
 
 // sql.query(connectionString, query, (err, rows) => {
@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 const sql = require('mssql')
 
 const config = {
-    user: 'erpuser',
-    password: 'ghs@wasnazskr@786@',
-    server: '202.143.127.178', 
+    user: '',
+    password: '',
+    server: '', 
     port : 1433,
     database: 'biztekmain',
     options: {
