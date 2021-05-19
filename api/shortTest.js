@@ -8,28 +8,21 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// const sql = require("msnodesqlv8");
-
-// const connectionString = "server=;Database=Biztekmain;User ID=erpuser;Password=;Driver={SQL Server Native Client 11.0}";
-// const query = "SELECT userid FROM users";
-
-// sql.query(connectionString, query, (err, rows) => {
-//     console.log('reach')
-//     console.log(rows);
-//     console.log(err)
-// });
 
 const sql = require('mssql')
 
 const config = {
     user: '',
     password: '',
-    server: '', 
+    //server: '', 
+    server:'',
     port : 1433,
-    database: 'biztekmain',
+    database: '',
     options: {
-        encrypt: true // Use this if you're on Windows Azure
+        encrypt: false// Use this if you're on Windows Azure
     }
+
+
 }
 var conn = new sql.ConnectionPool(config);
 
@@ -41,7 +34,7 @@ var conn = new sql.ConnectionPool(config);
    var req = new sql.Request(conn);
 
    // Call mssql's query method passing in params
-   req.query("select 1 as number")
+   req.query("select * from users")
    .then(function (recordset) {
      console.dir(recordset);
      conn.close();
@@ -63,4 +56,3 @@ var conn = new sql.ConnectionPool(config);
 app.listen(PORT, function(){
   console.log('Server is running on Port:',PORT);
 });
-
